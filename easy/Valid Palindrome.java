@@ -10,14 +10,30 @@ public class Solution {
             return true;
         }
         
-        int left = 0;
-        int right = s.length() - 1;
         s = s.toLowerCase();
-        
-        while(left < right){
-            
-        }
+        int i = 0;
+        int j = s.length() - 1;
 
+        while (i < s.length()-1 && j >= i){
+            if (!isValidPalindrome(s.charAt(i))){
+                i++;
+                continue;
+            }
+            if (!isValidPalindrome(s.charAt(j))){
+                j--;
+                continue;
+            }
+            if (s.charAt(i) != s.charAt(j)){
+                return false;
+            }
+            i++;
+            j--;
+        }
         return true;
     }
+
+    private boolean isValidPalindrome(char c){
+        return (c >= 'a' && c <= 'z') || (c >= '0' && c <= '9');
+    }
+
 }
